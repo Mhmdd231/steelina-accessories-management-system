@@ -6,9 +6,8 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Jinja2](https://img.shields.io/badge/Jinja2-Template-B41717)
 
-
+A full-stack e-commerce and inventory management web application built with Flask, featuring customer shopping, authentication, and an administrative dashboard.
 # Steelina Accessories Management System
 
 A full-stack web application for managing an online accessories store, developed using **Python**, **Flask**, **SQLite**, **HTML**, **CSS**, and **JavaScript**.
