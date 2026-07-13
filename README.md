@@ -1,5 +1,16 @@
 # Steelina Accessories Management System
 
+![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-3.1-black?logo=flask)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Jinja2](https://img.shields.io/badge/Jinja2-Template-B41717)
+
+
+# Steelina Accessories Management System
+
 A full-stack web application for managing an online accessories store, developed using **Python**, **Flask**, **SQLite**, **HTML**, **CSS**, and **JavaScript**.
 
 The system allows customers to browse and purchase products while providing administrators with a dashboard to manage products, categories, customers, and orders.
