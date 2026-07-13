@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+
+    <h2 class="logo">Steelina Admin</h2>
+
+    <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/products">Products</a></li>
+        <li><a href="/admin/categories">Categories</a></li>
+        <li><a href="/admin/customers">Customers</a></li>
+        <li><a href="/admin/orders">Orders</a></li>
+        <li><a href="/admin/logout">Logout</a></li>
+    </ul>
+
+</nav>
+
+<section class="dashboard-section">
+
+    <h1>Orders Management</h1>
+
+    <table class="cart-table">
+
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for order in orders %}
+        <tr>
+
+            <td>{{ order['order_id'] }}</td>
+
+            <td>{{ order['name'] }}</td>
+
+            <td>{{ order['date'] }}</td>
+
+            <td>${{ order['total'] }}</td>
+
+            <td>{{ order['status'] }}</td>
+
+            <td>
+
+                <a href="/admin/orders/status/{{ order['order_id'] }}/Processing">
+                    Processing
+                </a>
+
+                |
+
+                <a href="/admin/orders/status/{{ order['order_id'] }}/Completed">
+                    Completed
+                </a>
+
+
+                |
+                <a href="/admin/orders/details/{{ order['order_id'] }}">
+                    Details
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Steelina{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-container">
+<nav class="navbar">
+    <h2 class="logo">Steelina</h2>
+
+    <ul>
+        <li><a href="{{ url_for('shop.home') }}">Home</a></li>
+        <li><a href="{{ url_for('shop.shop') }}">Shop</a></li>
+        <li><a href="{{ url_for('wishlist.wishlist') }}">Wishlist</a></li>
+        <li><a href="{{ url_for('cart.cart') }}">Cart</a></li>
+        <li><a href="{{ url_for('shop.about') }}">About</a></li>
+        <li><a href="{{ url_for('shop.contact') }}">Contact</a></li>
+
+        {% if session.get('customer_id') %}
+            <li>
+                <a href="{{ url_for('profile.profile') }}">
+                    {{ session.get('customer_name') }}
+                </a>
+            </li>
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+        {% endif %}
+    </ul>
+
+    <button id="darkModeBtn">Dark Mode</button>
+</nav>
+
+<main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+    <p>© 2026 Steelina Accessories Store. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

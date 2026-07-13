@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ product['name'] }} - Steelina
+{% endblock %}
+
+{% block content %}
+
+<section class="product-details">
+
+    <div class="details-card">
+
+        <div class="product-big-image">
+            <img src="{{ url_for('static', filename='images/' + product['image']) }}"
+                 alt="{{ product['name'] }}">
+        </div>
+
+        <div class="details-info">
+
+            <h1>{{ product['name'] }}</h1>
+
+            <p>{{ product['description'] }}</p>
+
+            <h2>${{ product['price'] }}</h2>
+
+            <p>
+                <strong>Category:</strong>
+                {{ product['category'] }}
+            </p>
+
+            <p>
+                <strong>Stock:</strong>
+                {{ product['quantity'] }}
+            </p>
+
+            <div class="details-actions">
+
+                <a href="{{ url_for('cart.add_to_cart', product_id=product['product_id']) }}">
+                    <button>Add To Cart</button>
+                </a>
+
+                <a href="{{ url_for('wishlist.add_to_wishlist', product_id=product['product_id']) }}">
+                    <button>♡ Add to Wishlist</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

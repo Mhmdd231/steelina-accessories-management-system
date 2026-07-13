@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Shop - Steelina
+{% endblock %}
+
+{% block content %}
+
+<section class="products-section">
+    <h2>Shop Accessories</h2>
+
+    <div class="shop-controls">
+        <input type="text" id="searchInput" placeholder="Search products...">
+
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            {% for category in categories %}
+                <option value="{{ category['category_name'] }}">
+                    {{ category['category_name'] }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="product-grid">
+        {% for product in products %}
+
+        <div class="product-card"
+             data-name="{{ product['name'] }}"
+             data-category="{{ product['category'] }}">
+
+            <div class="product-img">
+                <img src="{{ url_for('static', filename='images/' + product['image']) }}"
+                     alt="{{ product['name'] }}">
+            </div>
+
+            <h3>{{ product['name'] }}</h3>
+            <p>{{ product['description'] }}</p>
+            <p class="price">${{ product['price'] }}</p>
+
+            {% if product['quantity'] > 0 %}
+                <p class="stock">In Stock: {{ product['quantity'] }}</p>
+            {% else %}
+                <p class="out-stock">Out of Stock</p>
+            {% endif %}
+
+            <a href="{{ url_for('shop.product_details', product_id=product['product_id']) }}"
+               class="btn-small">
+                View Details
+            </a>
+
+            <div class="actions">
+
+                <a href="{{ url_for('cart.add_to_cart', product_id=product['product_id']) }}">
+                    <button>Add to Cart</button>
+                </a>
+
+                <a href="{{ url_for('wishlist.add_to_wishlist', product_id=product['product_id']) }}">
+                    <button class="wishlist">♡ Wishlist</button>
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

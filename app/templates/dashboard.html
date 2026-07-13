@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Steelina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">Steelina Admin</h2>
+
+    <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/products">Products</a></li>
+        <li><a href="/admin/categories">Categories</a></li>
+        <li><a href="/admin/customers">Customers</a></li>
+        <li><a href="/admin/orders">Orders</a></li>
+        <li><a href="/admin/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<section class="dashboard-section">
+    <h1>Admin Dashboard</h1>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>Total Products</h3>
+            <p>{{ total_products }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Total Customers</h3>
+            <p>{{ total_customers }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Total Orders</h3>
+            <p>{{ total_orders }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Total Sales</h3>
+            <p>${{ total_sales }}</p>
+        </div>
+
+    </div>
+
+    <div class="chart-box">
+        <h2>Order Status Statistics</h2>
+
+        <canvas id="statusChart"></canvas>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const statusLabels = JSON.parse('{{ status_labels | tojson | safe }}');
+    const statusValues = JSON.parse('{{ status_values | tojson | safe }}');
+
+    const ctx = document.getElementById('statusChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: statusLabels,
+            datasets: [{
+                label: 'Orders',
+                data: statusValues
+            }]
+        }
+    });
+</script>
+
+<footer class="footer">
+    <p>© 2026 Steelina Accessories Store. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

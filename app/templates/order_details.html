@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">Steelina Admin</h2>
+
+    <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/orders">Orders</a></li>
+        <li><a href="/admin/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<section class="dashboard-section">
+    <h1>Order #{{ order_id }} Details</h1>
+
+    <table class="cart-table">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{ item['name'] }}</td>
+            <td>${{ item['price'] }}</td>
+            <td>{{ item['quantity'] }}</td>
+            <td>${{ item['price'] * item['quantity'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/admin/orders" class="btn-small">Back to Orders</a>
+</section>
+
+
+<footer class="footer">
+    <p>© 2026 Steelina Accessories Store. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Customers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">Steelina Admin</h2>
+
+    <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/products">Products</a></li>
+        <li><a href="/admin/categories">Categories</a></li>
+        <li><a href="/admin/customers">Customers</a></li>
+        <li><a href="/admin/orders">Orders</a></li>
+        <li><a href="/admin/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<section class="dashboard-section">
+    <h1>Customers Management</h1>
+
+    <table class="cart-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer['customer_id'] }}</td>
+            <td>{{ customer['name'] }}</td>
+            <td>{{ customer['email'] }}</td>
+            <td>
+                <a href="/admin/customers/delete/{{ customer['customer_id'] }}"
+                   class="delete-btn"
+                   onclick="return confirm('Delete this customer?');">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+</body>
+</html>

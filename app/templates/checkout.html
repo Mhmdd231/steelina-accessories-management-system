@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Steelina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">Steelina</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/wishlist">Wishlist</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+
+        {% if session.get('customer_id') %}
+            <li><a href="/profile">{{ session.get('customer_name') }}</a></li>
+            <li><a href="/logout">Logout</a></li>
+        {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        {% endif %}
+    </ul>
+        <button id="darkModeBtn">Dark Mode</button>
+    </nav>
+
+<section class="checkout-section">
+    <div class="checkout-box">
+        <h2>Order Placed Successfully!</h2>
+        <p>Thank you for shopping with Steelina.</p>
+        <h3>Total Paid: ${{ total }}</h3>
+
+        <a href="/shop" class="checkout-btn">Continue Shopping</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Steelina Accessories Store. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

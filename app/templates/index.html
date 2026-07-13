@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - Steelina
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div>
+        <h1>Steelina Accessories</h1>
+        <p>Smart Accessories Store & Inventory Management System</p>
+        <a href="{{ url_for('shop.shop') }}" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<section class="products-section">
+    <h2>Featured Products</h2>
+
+    <div class="product-grid">
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <div class="product-img">
+                <img src="{{ url_for('static', filename='images/' + product['image']) }}"
+                     alt="{{ product['name'] }}">
+            </div>
+
+            <h3>{{ product['name'] }}</h3>
+            <p>{{ product['description'] }}</p>
+            <p class="price">${{ product['price'] }}</p>
+
+            {% if product['quantity'] > 0 %}
+                <p class="stock">In Stock</p>
+            {% else %}
+                <p class="out-stock">Out of Stock</p>
+            {% endif %}
+
+            <div class="actions">
+
+                <a href="{{ url_for('shop.product_details', product_id=product['product_id']) }}"
+                class="btn-small">
+                    View Details
+                </a>
+
+                <a href="{{ url_for('cart.add_to_cart', product_id=product['product_id']) }}">
+                    <button>Add to Cart</button>
+                </a>
+
+                <a href="{{ url_for('wishlist.add_to_wishlist', product_id=product['product_id']) }}">
+                    <button class="wishlist">♡ Wishlist</button>
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+<section class="reviews">
+    <h2>Customer Reviews</h2>
+
+    <div class="review-box">
+        <p>"Beautiful accessories and easy shopping experience!"</p>
+        <strong>- Sarah</strong>
+    </div>
+
+    <div class="review-box">
+        <p>"The dashboard idea is very useful for managing products."</p>
+        <strong>- Maya</strong>
+    </div>
+</section>
+
+{% endblock %}

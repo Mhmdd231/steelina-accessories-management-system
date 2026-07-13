@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<section class="form-section">
+    <form method="POST" class="form-box">
+        <h2>Edit Category</h2>
+
+        <input type="text"
+               name="category_name"
+               value="{{ category['category_name'] }}"
+               required>
+
+        <button type="submit">Update Category</button>
+    </form>
+</section>
+
+
+
+</body>
+</html>

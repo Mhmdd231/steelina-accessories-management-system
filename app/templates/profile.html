@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile - Steelina
+{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <form method="POST" class="form-box">
+
+        <h2>My Profile</h2>
+
+        <input
+            type="text"
+            name="name"
+            value="{{ customer['name'] }}"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            value="{{ customer['email'] }}"
+            required
+        >
+
+        <button type="submit">
+            Update Profile
+        </button>
+
+        <br><br>
+
+        <a href="{{ url_for('profile.delete_account') }}"
+           class="delete-btn"
+           onclick="return confirm('Are you sure you want to delete your account?');">
+            Delete Account
+        </a>
+
+    </form>
+
+</section>
+
+{% endblock %}

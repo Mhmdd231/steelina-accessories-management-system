@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<section class="form-section">
+    <form method="POST" class="form-box">
+        <h2>Add Category</h2>
+
+        <input type="text"
+               name="category_name"
+               placeholder="Category Name"
+               required>
+
+        <button type="submit">Save Category</button>
+    </form>
+</section>
+
+</body>
+</html>
